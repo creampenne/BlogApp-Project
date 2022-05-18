@@ -2,10 +2,10 @@
     <string name="app_name">BlogApp Project</string>
 
     <string name="reguserphoto">userphoto</string>
-    <string name="regName">Name</string>
-    <string name="regMail">Mail</string>
-    <string name="regPassword">Password</string>
-    <string name="regPassword2">Confirm Password</string>
-    <string name="regButton">Register</string>
+    <string name="regName">이름</string>
+    <string name="regMail">이메일</string>
+    <string name="regPassword">비밀번호</string>
+    <string name="regPassword2">비밀번호 확인</string>
+    <string name="regButton">회원가입</string>
 
 </resources>
