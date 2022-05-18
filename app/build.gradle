@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -28,6 +29,10 @@ android {
 }
 
 dependencies {
+    // Firebase BoM
+    implementation platform('com.google.firebase:firebase-bom:30.0.1')
+    // Google Analytics
+    implementation 'com.google.firebase:firebase-analytics'
 
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.6.0'
