@@ -1,6 +1,9 @@
 package com.cookandroid.blogappproject.Activities;
 
-import androidx.annotation.Nullable;
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -11,7 +14,6 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -21,7 +23,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     ImageView ImgUserPhoto;
     static int PReqCode = 1;
-    static int REQUESTCODE = 1;
+    Intent intent;
     Uri pickedImgUri;
 
     @Override
@@ -31,32 +33,31 @@ public class RegisterActivity extends AppCompatActivity {
 
         ImgUserPhoto = findViewById(R.id.regUserPhoto);
 
-        ImgUserPhoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        // Anonymous Class -> Lambda
+        ImgUserPhoto.setOnClickListener(view -> {
 
-                if (Build.VERSION.SDK_INT >= 22) {
+            if (Build.VERSION.SDK_INT >= 22) {
 
-                    checkAndRequestForPermission();
+                checkAndRequestForPermission();
 
-                } else {
-                    openGallery();
-                }
-
+            } else {
+                openGallery();
             }
+
         });
 
     }
 
     private void openGallery() {
-        //TODO: open gallery intent, wait for user to pick an  image !!
 
         Intent galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
         galleryIntent.setType("image/*");
-        startActivityForResult(galleryIntent, REQUESTCODE);
+        launcher.launch(galleryIntent);
 
     }
 
+    // Check Permission
+    // TODO : 권한 부여되지 않았을 때 재요청
     private void checkAndRequestForPermission() {
 
         if (ContextCompat.checkSelfPermission(RegisterActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -69,7 +70,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
             else {
                 ActivityCompat.requestPermissions(RegisterActivity.this,
-                                                    new String[]{ Manifest.permission.READ_EXTERNAL_STORAGE },
+                                                    new String[] { Manifest.permission.READ_EXTERNAL_STORAGE },
                                                     PReqCode);
             }
 
@@ -79,18 +80,22 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+    // Gallery Photo Callback
+    ActivityResultLauncher<Intent> launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+        @Override
+        public void onActivityResult(ActivityResult data) {
 
-        if (resultCode == RESULT_OK && requestCode == REQUESTCODE && data != null) {
+            if (data.getResultCode() == RESULT_OK) {
 
-            // the user has successfully picked an image
-            // we need to save its reference to a Uri variable
-            pickedImgUri = data.getData();
-            ImgUserPhoto.setImageURI(pickedImgUri);
+                intent = data.getData();
+                assert intent != null;
+                pickedImgUri = intent.getData();
+                ImgUserPhoto.setImageURI(pickedImgUri);
+
+            }
 
         }
 
-    }
+    });
+
 }
