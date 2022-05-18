@@ -7,11 +7,12 @@
     tools:context=".Activities.RegisterActivity"
     android:background="#FFFFFF">
 
-    <!--android:id /res/values/@strings.xml
-        android:-->
+    <!--android:id /res/values/@strings.xml (strigns.xml에 id변수 저장)
+        tools:ignore="TextContrastCheck" (오류 수정)
+        android:autofillHints="no" (오류 수정)-->
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/regUser"
         android:layout_width="90dp"
         android:layout_height="90dp"
         android:layout_marginBottom="8dp"
