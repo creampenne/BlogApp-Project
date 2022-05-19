@@ -38,8 +38,8 @@ public class RegisterActivity extends AppCompatActivity {
     Uri pickedImgUri;
 
     private EditText userName, userEmail, userPassword, userPassword2;
-    private ProgressBar loadingProgress;
     private Button regBtn;
+    private ProgressBar loadingProgress;
 
     private FirebaseAuth mAuth;
 
