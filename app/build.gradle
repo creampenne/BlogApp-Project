@@ -31,6 +31,10 @@ android {
 dependencies {
     // Firebase BoM
     implementation platform('com.google.firebase:firebase-bom:30.0.1')
+    // Firebase Auth
+    implementation 'com.google.firebase:firebase-auth:21.0.4'
+    // Firebase Cloud Storage
+    implementation 'com.google.firebase:firebase-storage:20.0.1'
     // Google Analytics
     implementation 'com.google.firebase:firebase-analytics'
 
