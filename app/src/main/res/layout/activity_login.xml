@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.HomeActivity"
-    android:background="#FFFFFF" >
+    android:background="#FFFFFF"
+    tools:context=".Activities.HomeActivity">
 
     <ImageView
         android:id="@+id/logUserPhoto"
@@ -25,8 +25,6 @@
         app:srcCompat="@drawable/userphoto" />
 
     <EditText
-        android:hint="@string/logMail"
-        android:background="@drawable/reg_edittext_style"
         android:id="@+id/logMail"
         android:layout_width="265dp"
         android:layout_height="wrap_content"
@@ -35,13 +33,15 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="4dp"
+        android:autofillHints="no"
+        android:background="@drawable/reg_edittext_style"
         android:ems="10"
+        android:hint="@string/logMail"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="TextContrastCheck"
-        android:autofillHints="no" />
+        tools:ignore="TextContrastCheck" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -51,8 +51,6 @@
         app:layout_constraintGuide_percent="0.5" />
 
     <EditText
-        android:hint="@string/logPassword"
-        android:background="@drawable/reg_edittext_style"
         android:id="@+id/logPassword"
         android:layout_width="265dp"
         android:layout_height="wrap_content"
@@ -61,13 +59,15 @@
         android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:autofillHints="no"
+        android:background="@drawable/reg_edittext_style"
         android:ems="10"
+        android:hint="@string/logPassword"
         android:inputType="textPassword"
-        app:layout_constraintTop_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="TextContrastCheck"
-        android:autofillHints="no" />
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/logBtn"

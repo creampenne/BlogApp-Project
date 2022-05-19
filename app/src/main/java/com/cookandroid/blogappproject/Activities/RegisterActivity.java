@@ -32,11 +32,11 @@ import java.util.Objects;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    ImageView ImgUserPhoto;
     static int PReqCode = 1;
     Intent intent;
     Uri pickedImgUri;
 
+    ImageView ImgUserPhoto;
     private EditText userName, userEmail, userPassword, userPassword2;
     private Button regBtn;
     private ProgressBar loadingProgress;
@@ -50,13 +50,12 @@ public class RegisterActivity extends AppCompatActivity {
 
         ImgUserPhoto = findViewById(R.id.regUserPhoto);
 
-        // ini views
         userName = findViewById(R.id.regName);
         userEmail = findViewById(R.id.regMail);
         userPassword = findViewById(R.id.regPassword);
         userPassword2 = findViewById(R.id.regPassword2);
-        loadingProgress = findViewById(R.id.regProgressBar);
         regBtn = findViewById(R.id.regBtn);
+        loadingProgress = findViewById(R.id.regProgressBar);
 
         // progressbar default : invisible
         loadingProgress.setVisibility(View.INVISIBLE);
@@ -65,7 +64,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         // Anonymous Class -> Lambda
         regBtn.setOnClickListener(view -> {
-
             regBtn.setVisibility(View.INVISIBLE);
             loadingProgress.setVisibility(View.VISIBLE);
 
@@ -95,7 +93,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    // create user account
+    // Create user account
     private void CreateUserAccount(String email, String name, String password) {
         // Anonymous Class -> Lambda
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, task -> {
@@ -103,7 +101,7 @@ public class RegisterActivity extends AppCompatActivity {
                 // user account created successfully
                 showMessage("계정을 생성했습니당");
                 // update name, picture
-                updateUserInfo( name, pickedImgUri, mAuth.getCurrentUser());
+                updateUserInfo(name, pickedImgUri, mAuth.getCurrentUser());
             } else {
                 // account creation failed
                 showMessage("계정 생성을 실패했습니당\n" + Objects.requireNonNull(task.getException()).getMessage());
@@ -113,7 +111,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    // update name, picture
+    // Update name, picture
     private void updateUserInfo(final String name, Uri pickedImgUri, final FirebaseUser currentUser) {
         // upload picture to firebase storage, get url
         StorageReference mStorage = FirebaseStorage.getInstance().getReference().child("users_photos");
@@ -146,12 +144,14 @@ public class RegisterActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 
+    // Open Gallery
     private void openGallery() {
         Intent galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
         galleryIntent.setType("image/*");
         launcher.launch(galleryIntent);
     }
 
+    // Change Activity
     private void updateUI() {
         Intent homeActivity = new Intent(getApplicationContext(), HomeActivity.class);
         startActivity(homeActivity);
@@ -159,13 +159,12 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     // Check Permission
-    // TODO: 권한 부여되지 않았을 때 재요청
     private void checkAndRequestForPermission() {
         if (ContextCompat.checkSelfPermission(RegisterActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(RegisterActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
                 Toast.makeText(RegisterActivity.this, "권한이 필요합니당", Toast.LENGTH_SHORT).show();
             } else {
-                ActivityCompat.requestPermissions(RegisterActivity.this, new String[] { Manifest.permission.READ_EXTERNAL_STORAGE }, PReqCode);
+                ActivityCompat.requestPermissions(RegisterActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, PReqCode);
             }
         } else
             openGallery();
@@ -181,7 +180,6 @@ public class RegisterActivity extends AppCompatActivity {
                 pickedImgUri = intent.getData();
                 ImgUserPhoto.setImageURI(pickedImgUri);
             }
-            // TODO: else문 작성
         }
     });
 }
