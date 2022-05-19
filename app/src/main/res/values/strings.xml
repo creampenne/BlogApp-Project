@@ -8,4 +8,9 @@
     <string name="regPassword2">비밀번호 확인</string>
     <string name="regButton">회원가입</string>
 
+    <string name="logUserPhoto">userphoto</string>
+    <string name="logMail">이메일</string>
+    <string name="logPassword">비밀번호</string>
+    <string name="logButton">로그인</string>
+
 </resources>

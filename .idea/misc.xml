@@ -6,7 +6,11 @@
         <entry key="app/src/main/res/drawable/reg_btn_style.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/reg_edittext_style.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.375" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/content_login.xml" value="0.19630192502532928" />
+        <entry key="app/src/main/res/layout/fragment_first.xml" value="0.19630192502532928" />
+        <entry key="app/src/main/res/layout/fragment_second.xml" value="0.19630192502532928" />
       </map>
     </option>
   </component>
