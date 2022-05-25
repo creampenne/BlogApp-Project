@@ -1,11 +1,16 @@
 package com.cookandroid.blogappproject.Activities;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -21,7 +26,6 @@ import com.cookandroid.blogappproject.Fragments.SettingsFragment;
 import com.cookandroid.blogappproject.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -31,7 +35,12 @@ public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     FirebaseAuth mAuth;
-    FirebaseUser currentUser ;
+    FirebaseUser currentUser;
+
+    Dialog popupAddPost;
+    ImageView popupUserImage, popupPostImage, popupAddBtn;
+    TextView popupTitle, popupDescription;
+    ProgressBar loadingProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +52,12 @@ public class Home extends AppCompatActivity
 
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
+        
+        Popup();
 
         FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(view -> Snackbar.make(view, "Action 교체 필요", Snackbar.LENGTH_LONG).setAction("Action", null).show());
+        // Lambda 변경
+        fab.setOnClickListener(view -> popupAddPost.show());
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -56,6 +68,35 @@ public class Home extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         updateNavHeader();
+    }
+
+    private void Popup() {
+        popupAddPost = new Dialog(this);
+        popupAddPost.setContentView(R.layout.popup_add_post);
+        popupAddPost.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        popupAddPost.getWindow().setLayout(Toolbar.LayoutParams.MATCH_PARENT, Toolbar.LayoutParams.WRAP_CONTENT);
+        popupAddPost.getWindow().getAttributes().gravity = Gravity.TOP;
+
+        // 팝업 위젯 초기화
+        popupUserImage = popupAddPost.findViewById(R.id.popup_user_image);
+        popupPostImage = popupAddPost.findViewById(R.id.popup_image);
+        popupTitle = popupAddPost.findViewById(R.id.popup_title);
+        popupDescription = popupAddPost.findViewById(R.id.popup_description);
+        popupAddBtn = popupAddPost.findViewById(R.id.popup_add);
+        loadingProgress = popupAddPost.findViewById(R.id.popup_progressBar);
+
+        loadingProgress.setVisibility(View.INVISIBLE);
+
+        // 현재 사용자 프로필 이미지 불러오기
+        Glide.with(Home.this).load(currentUser.getPhotoUrl()).into(popupUserImage);
+
+        // 업로드 버튼 클릭시
+        // Lambda 변경
+        popupAddBtn.setOnClickListener(view -> {
+            popupAddBtn.setVisibility(View.INVISIBLE);
+            loadingProgress.setVisibility(View.VISIBLE);
+        });
+
     }
 
     // 뒤로가기 버튼 종료
@@ -81,7 +122,6 @@ public class Home extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }

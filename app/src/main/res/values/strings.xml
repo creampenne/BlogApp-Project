@@ -36,4 +36,11 @@
     <string name="nav_settings">설정</string>
     <string name="nav_signout">로그아웃</string>
 
+    // popup_add_post.xml
+    <string name="popup_user_image">popup_user_image</string>
+    <string name="popup_image">popup_image</string>
+    <string name="popup_add">popup_add</string>
+    <string name="popup_title">제목</string>
+    <string name="popup_description">내용</string>
+
 </resources>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--android:id /res/values/@strings.xml (strigns.xml에 id변수 저장)
+        tools:ignore="TextContrastCheck" (오류 수정)
+        android:autofillHints="no" (오류 수정)-->
+
+    <ImageView
+        android:padding="4dp"
+        android:background="#FFFFFF"
+        android:id="@+id/popup_user_image"
+        android:layout_width="48dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/popup_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/popup_title"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars"
+        android:contentDescription="@string/popup_user_image" />
+
+    <EditText
+        android:id="@+id/popup_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:autofillHints="no"
+        android:background="@drawable/popup_edittext_style"
+        android:ems="10"
+        android:hint="@string/popup_title"
+        android:inputType="textPersonName"
+        android:padding="12dp"
+        app:layout_constraintEnd_toStartOf="@+id/popup_user_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/popup_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/popup_edittext_style"
+        android:ems="10"
+        android:hint="@string/popup_description"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/popup_title"
+        tools:ignore="TextContrastCheck" />
+
+    <ImageView
+        android:background="#2D2D2D"
+        android:id="@+id/popup_image"
+        android:layout_width="0dp"
+        android:layout_height="225dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/popup_description"
+        tools:srcCompat="@tools:sample/backgrounds/scenic"
+        android:contentDescription="@string/popup_image" />
+
+    <ImageView
+        android:id="@+id/popup_add"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:background="@drawable/circle_background"
+        android:padding="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/popup_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/popup_image"
+        app:srcCompat="@drawable/ic_baseline_add_24"
+        android:contentDescription="@string/popup_add" />
+
+    <ProgressBar
+        android:padding="4dp"
+        android:id="@+id/popup_progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/circle_background"
+        app:layout_constraintBottom_toBottomOf="@+id/popup_add"
+        app:layout_constraintEnd_toEndOf="@+id/popup_add"
+        app:layout_constraintStart_toStartOf="@+id/popup_add"
+        app:layout_constraintTop_toTopOf="@+id/popup_add" />
+</androidx.constraintlayout.widget.ConstraintLayout>
