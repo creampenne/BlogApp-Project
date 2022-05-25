@@ -1,5 +1,6 @@
 package com.cookandroid.blogappproject.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,6 +15,9 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.bumptech.glide.Glide;
+import com.cookandroid.blogappproject.Fragments.HomeFragment;
+import com.cookandroid.blogappproject.Fragments.ProfileFragment;
+import com.cookandroid.blogappproject.Fragments.SettingsFragment;
 import com.cookandroid.blogappproject.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -99,15 +103,19 @@ public class Home extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            // Handle the camera action
-        } else if (id == R.id.nav_bookmark) {
-
-        } else if (id == R.id.nav_chat) {
-
-        } else if (id == R.id.nav_setting) {
-
-        } else if (id == R.id.nav_logout) {
-
+            getSupportActionBar().setTitle("홈");
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
+        } else if (id == R.id.nav_profile) {
+            getSupportActionBar().setTitle("프로필");
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, new ProfileFragment()).commit();
+        } else if (id == R.id.nav_settings) {
+            getSupportActionBar().setTitle("설정");
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, new SettingsFragment()).commit();
+        } else if (id == R.id.nav_signout) {
+            FirebaseAuth.getInstance().signOut();
+            Intent loginActivity = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(loginActivity);
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

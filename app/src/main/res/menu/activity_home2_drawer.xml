@@ -6,23 +6,19 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/home"
+            android:icon="@drawable/ic_baseline_home_24"
             android:title="홈" />
         <item
-            android:id="@+id/nav_bookmark"
-            android:icon="@drawable/bookmark"
-            android:title="북마크" />
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_baseline_person_24"
+            android:title="프로필" />
         <item
-            android:id="@+id/nav_chat"
-            android:icon="@drawable/chat"
-            android:title="채팅" />
-        <item
-            android:id="@+id/nav_setting"
-            android:icon="@drawable/setting"
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_baseline_settings_24"
             android:title="설정" />
         <item
-            android:id="@+id/nav_logout"
-            android:icon="@drawable/logout"
+            android:id="@+id/nav_signout"
+            android:icon="@drawable/ic_baseline_exit_to_app_24"
             android:title="로그아웃" />
     </group>
 </menu>
