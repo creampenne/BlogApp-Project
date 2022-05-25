@@ -46,14 +46,14 @@ public class LoginActivity extends AppCompatActivity {
 
         homeActivity = new Intent(this, com.cookandroid.blogappproject.Activities.Home.class);
 
-        // Anonymous Class -> Lambda
+        // Lambda 변경
         ImgUserPhoto.setOnClickListener(view -> {
             Intent registerActivity = new Intent(getApplicationContext(), RegisterActivity.class);
             startActivity(registerActivity);
             finish();
         });
 
-        // Anonymous Class -> Lambda
+        // Lambda 변경
         logBtn.setOnClickListener(view -> {
             logBtn.setVisibility(View.INVISIBLE);
             loadingProgress.setVisibility(View.VISIBLE);
@@ -71,9 +71,9 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    // Check Login
+    // 로그인 확인
     private void signIn(String email, String password) {
-        // Anonymous Class -> Lambda
+        // Lambda 변경
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 loadingProgress.setVisibility(View.INVISIBLE);
@@ -88,25 +88,24 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    // simple method to show toast message
+    // Toast 메시지
     private void showMessage(String message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 
-    // Change Activity
+    // Home 액티비티 실행
     private void updateUI() {
         startActivity(homeActivity);
         finish();
     }
 
-    // Check Login
+    // 앱 실행시 로그인 확인
     @Override
     protected void onStart() {
         super.onStart();
         FirebaseUser user = mAuth.getCurrentUser();
 
         if (user != null) {
-            // user is already connected, so we need to redirect to HomeActivity
             updateUI();
         }
     }

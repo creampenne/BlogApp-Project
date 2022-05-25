@@ -56,13 +56,12 @@ public class RegisterActivity extends AppCompatActivity {
         userPassword2 = findViewById(R.id.regPassword2);
         regBtn = findViewById(R.id.regBtn);
         loadingProgress = findViewById(R.id.regProgressBar);
-
-        // progressbar default : invisible
+        
         loadingProgress.setVisibility(View.INVISIBLE);
 
         mAuth = FirebaseAuth.getInstance();
 
-        // Anonymous Class -> Lambda
+        // Lambda 변경
         regBtn.setOnClickListener(view -> {
             regBtn.setVisibility(View.INVISIBLE);
             loadingProgress.setVisibility(View.VISIBLE);
@@ -83,7 +82,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-        // Anonymous Class -> Lambda
+        // Lambda 변경
         ImgUserPhoto.setOnClickListener(view -> {
             if (Build.VERSION.SDK_INT >= 22) {
                 checkAndRequestForPermission();
@@ -93,17 +92,14 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    // Create user account
+    // 사용자 계정 생성
     private void CreateUserAccount(String email, String name, String password) {
-        // Anonymous Class -> Lambda
+        // Lambda 변경
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, task -> {
             if (task.isSuccessful()) {
-                // user account created successfully
                 showMessage("계정을 생성했습니당");
-                // update name, picture
                 updateUserInfo(name, pickedImgUri, mAuth.getCurrentUser());
             } else {
-                // account creation failed
                 showMessage("계정 생성을 실패했습니당\n" + Objects.requireNonNull(task.getException()).getMessage());
                 regBtn.setVisibility(View.VISIBLE);
                 loadingProgress.setVisibility(View.INVISIBLE);
@@ -111,26 +107,23 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    // Update name, picture
+    // Firebase에 이름, 사진 업로드
     private void updateUserInfo(final String name, Uri pickedImgUri, final FirebaseUser currentUser) {
-        // upload picture to firebase storage, get url
+        // 사진 업로드 및 url 받기
         StorageReference mStorage = FirebaseStorage.getInstance().getReference().child("users_photos");
         StorageReference imageFilePath = mStorage.child(pickedImgUri.getLastPathSegment());
-
-        // Anonymous Class -> Lambda
+        // Lambda 변경
         imageFilePath.putFile(pickedImgUri).addOnSuccessListener(taskSnapshot -> {
-            // picture uploaded successfully, get picture url
-
-            // Anonymous Class -> Lambda
+            // Lambda 변경
             imageFilePath.getDownloadUrl().addOnSuccessListener(uri -> {
                 UserProfileChangeRequest profileUpdate = new UserProfileChangeRequest.Builder()
                         .setDisplayName(name)
                         .setPhotoUri(uri)
                         .build();
-                // Anonymous Class -> Lambda
+                // Lambda 변경
                 currentUser.updateProfile(profileUpdate).addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        // user info updated successfully
+                        // 성공적으로 회원가입 완료시
                         showMessage("회원가입 완료!");
                         updateUI();
                     }
@@ -139,26 +132,26 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    // simple method to show toast message
+    // Toast 메시지
     private void showMessage(String message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 
-    // Open Gallery
+    // 갤러리 열기
     private void openGallery() {
         Intent galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
         galleryIntent.setType("image/*");
         launcher.launch(galleryIntent);
     }
 
-    // Change Activity
+    // Home 액티비티 실행
     private void updateUI() {
         Intent homeActivity = new Intent(getApplicationContext(), Home.class);
         startActivity(homeActivity);
         finish();
     }
 
-    // Check Permission
+    // 앱 권환 확인
     private void checkAndRequestForPermission() {
         if (ContextCompat.checkSelfPermission(RegisterActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(RegisterActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
@@ -170,7 +163,7 @@ public class RegisterActivity extends AppCompatActivity {
             openGallery();
     }
 
-    // Gallery Photo Callback
+    // 갤러리 사진 콜백
     ActivityResultLauncher<Intent> launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
         @Override
         public void onActivityResult(ActivityResult data) {

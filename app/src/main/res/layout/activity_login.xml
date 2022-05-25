@@ -7,6 +7,10 @@
     android:background="#FFFFFF"
     tools:context=".Activities.HomeActivity">
 
+    <!--android:id /res/values/@strings.xml (strigns.xml에 id변수 저장)
+        tools:ignore="TextContrastCheck" (오류 수정)
+        android:autofillHints="no" (오류 수정)-->
+
     <ImageView
         android:id="@+id/logUserPhoto"
         android:layout_width="90dp"

@@ -25,6 +25,8 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.Objects;
+
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -36,37 +38,30 @@ public class Home extends AppCompatActivity
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_home2);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(view -> Snackbar.make(view, "Action 교체 필요", Snackbar.LENGTH_LONG).setAction("Action", null).show());
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         updateNavHeader();
-
     }
 
+    // 뒤로가기 버튼 종료
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -74,18 +69,16 @@ public class Home extends AppCompatActivity
         }
     }
 
+    // 메뉴 확장
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.home, menu);
         return true;
     }
 
+    // ActionBar 항목 클릭
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -96,20 +89,19 @@ public class Home extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
+    // 메뉴 정보 선택
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            getSupportActionBar().setTitle("홈");
+            Objects.requireNonNull(getSupportActionBar()).setTitle("홈");
             getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
         } else if (id == R.id.nav_profile) {
-            getSupportActionBar().setTitle("프로필");
+            Objects.requireNonNull(getSupportActionBar()).setTitle("프로필");
             getSupportFragmentManager().beginTransaction().replace(R.id.container, new ProfileFragment()).commit();
         } else if (id == R.id.nav_settings) {
-            getSupportActionBar().setTitle("설정");
+            Objects.requireNonNull(getSupportActionBar()).setTitle("설정");
             getSupportFragmentManager().beginTransaction().replace(R.id.container, new SettingsFragment()).commit();
         } else if (id == R.id.nav_signout) {
             FirebaseAuth.getInstance().signOut();
@@ -118,25 +110,23 @@ public class Home extends AppCompatActivity
             finish();
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
-    // nav_header_home 업데이트 메서드
+    // nav_header_home 정보 업데이트
     public void updateNavHeader() {
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         View headerView = navigationView.getHeaderView(0);
+
+        ImageView navUserPhot = headerView.findViewById(R.id.nav_user_photo);
         TextView navUsername = headerView.findViewById(R.id.nav_username);
         TextView navUserMail = headerView.findViewById(R.id.nav_user_mail);
-        ImageView navUserPhot = headerView.findViewById(R.id.nav_user_photo);
 
         navUserMail.setText(currentUser.getEmail());
         navUsername.setText(currentUser.getDisplayName());
-
         // Glide로 사용자 이미지 불러오기
         Glide.with(this).load(currentUser.getPhotoUrl()).into(navUserPhot);
-
     }
 }
