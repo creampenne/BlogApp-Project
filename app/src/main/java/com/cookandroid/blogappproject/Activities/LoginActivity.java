@@ -1,7 +1,5 @@
 package com.cookandroid.blogappproject.Activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +8,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.cookandroid.blogappproject.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        homeActivity = new Intent(this, com.cookandroid.blogappproject.Activities.HomeActivity.class);
+        homeActivity = new Intent(this, com.cookandroid.blogappproject.Activities.Home.class);
 
         // Anonymous Class -> Lambda
         ImgUserPhoto.setOnClickListener(view -> {

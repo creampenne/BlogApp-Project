@@ -14,14 +14,15 @@
         android:theme="@style/Theme.BlogAppProject">
 
         <activity
-            android:name=".Activities.HomeActivity"
-            android:exported="false" />
+            android:name=".Activities.Home"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".Activities.RegisterActivity"
             android:exported="true" />
         <activity
             android:name=".Activities.LoginActivity"
-            android:exported="true">
+            android:exported="true" >
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

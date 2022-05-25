@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">BlogApp Project</string>
 
+    // RegisterActivity.java
     <string name="reguserphoto">userphoto</string>
     <string name="regName">이름</string>
     <string name="regMail">이메일</string>
@@ -8,9 +9,22 @@
     <string name="regPassword2">비밀번호 확인</string>
     <string name="regButton">회원가입</string>
 
+    // LoginActivity.java
     <string name="logUserPhoto">userphoto</string>
     <string name="logMail">이메일</string>
     <string name="logPassword">비밀번호</string>
     <string name="logButton">로그인</string>
+
+    // Home.java
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    // home.xml
+    <string name="action_settings">Settings</string>
+
+    // nav_header_home.xml
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
 
 </resources>
