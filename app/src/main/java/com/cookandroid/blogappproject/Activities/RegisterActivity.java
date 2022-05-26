@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    static int PReqCode = 1;
+    private static final int PReqCode = 1;
     Intent intent;
     Uri pickedImgUri;
 
@@ -151,7 +151,7 @@ public class RegisterActivity extends AppCompatActivity {
         finish();
     }
 
-    // 앱 권환 확인
+    // 앱 저장소 권환 확인
     private void checkAndRequestForPermission() {
         if (ContextCompat.checkSelfPermission(RegisterActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(RegisterActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
