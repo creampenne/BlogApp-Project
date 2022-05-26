@@ -43,4 +43,11 @@
     <string name="popup_title">제목</string>
     <string name="popup_description">내용</string>
 
+    //row_post_item.xml
+    <string name="row_post_image">row_post_image</string>
+    <string name="black_gradient">black_gradient</string>
+    <string name="row_post_user_image">row_post_user_image</string>
+    <string name="post_title">post_title</string>
+
+
 </resources>
