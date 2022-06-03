@@ -6,6 +6,7 @@
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2855" />
         <entry key="app/src/main/res/drawable/black_gradient.xml" value="0.1965" />
         <entry key="app/src/main/res/drawable/circle_background.xml" value="0.3765" />
+        <entry key="app/src/main/res/drawable/edittext_button_style_rounded.xml" value="0.186" />
         <entry key="app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.2075" />
         <entry key="app/src/main/res/drawable/ic_baseline_exit_to_app_24.xml" value="0.2075" />
         <entry key="app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.111" />
@@ -21,6 +22,7 @@
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_home2.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_post_detail.xml" value="0.36041666666666666" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.335" />
         <entry key="app/src/main/res/layout/app_bar_home.xml" value="0.335" />
         <entry key="app/src/main/res/layout/black_gradient.xml" value="0.3007246376811594" />

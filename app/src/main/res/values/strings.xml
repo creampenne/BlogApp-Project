@@ -43,11 +43,19 @@
     <string name="popup_title">제목</string>
     <string name="popup_description">내용</string>
 
-    //row_post_item.xml
+    // row_post_item.xml
     <string name="row_post_image">row_post_image</string>
     <string name="black_gradient">black_gradient</string>
     <string name="row_post_user_image">row_post_user_image</string>
     <string name="post_title">post_title</string>
 
-
+    // activity_post_detail.xml
+    <string name="post_detail_img">post_detail_img</string>
+    <string name="post_detail_title">post_detail_title</string>
+    <string name="post_detail_date_name">post_detail_date_name</string>
+    <string name="post_detail_desc">천고에 그러므로 없으면 커다란 크고 위하여, 없으면, 투명하되 물방아 끓는다. 이상 그러므로 피부가 석가는 낙원을 풀이 거친 공자는 이상은 때문이다. 봄바람을 이상이 위하여서 있으며, 것이다.</string>
+    <string name="post_detail_currentuser_img">post_detail_currentuser_img</string>
+    <string name="post_detail_comment_hint">Write Comment</string>
+    <string name="post_detail_add_comment_btn_hint">등록</string>
+    <string name="post_detail_user_img">post_detail_user_img</string>
 </resources>

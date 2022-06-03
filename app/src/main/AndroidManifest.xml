@@ -12,24 +12,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BlogAppProject">
-
+        <activity
+            android:name=".Activities.PostDetailActivity"
+            android:exported="false" />
         <activity
             android:name=".Activities.Home"
             android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activities.RegisterActivity"
             android:exported="true" />
         <activity
             android:name=".Activities.LoginActivity"
-            android:exported="true" >
-
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
     </application>
 
