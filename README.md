@@ -6,7 +6,6 @@
 ![Java](https://img.shields.io/badge/Java-007396?style=flat-square&logo=Java&logoColor=white)
 </br>
 ![Android](https://img.shields.io/badge/AndroidStudio-3DDC84?style=flat-square&logo=AndroidStudio&logoColor=white)
-![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=Firebase&logoColor=white)
 
 - #### 추가하면 좋을 기능 :
 1. 로그인 : 회원가입 버튼 생성, 구글 로그인 버튼 생성
