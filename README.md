@@ -10,6 +10,7 @@
 - #### 추가하면 좋을 기능 :
 1. 로그인 : 회원가입 버튼 생성, 구글 로그인 버튼 생성
 2. 세부 게시물 : 댓글 등록 버튼 변경
+3. 댓글을 입력하세요
 
 - #### 어려웠던 부분 :
 1. RegisterActivity : startActivityForResult 대체 registerForActivityResult

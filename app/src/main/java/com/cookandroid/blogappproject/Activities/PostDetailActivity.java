@@ -82,23 +82,29 @@ public class PostDetailActivity extends AppCompatActivity {
         // 댓글 등록 버튼 클릭시 데이터 넣기
         // Lambda 변경
         btnAddComment.setOnClickListener(view -> {
-            btnAddComment.setVisibility(View.INVISIBLE);
+            final String comment = editTextComment.getText().toString();
 
-            DatabaseReference commentReference = firebaseDatabase.getReference(COMMENT_KEY).child(PostKey).push();
+            if (comment.isEmpty() ) {
+                showMessage("댓글을 입력하세용");
+            } else {
+                btnAddComment.setVisibility(View.INVISIBLE);
 
-            String comment_content = editTextComment.getText().toString();
-            String userId = firebaseUser.getUid();
-            String userPhoto = Objects.requireNonNull(firebaseUser.getPhotoUrl()).toString();
-            String userName = firebaseUser.getDisplayName();
+                DatabaseReference commentReference = firebaseDatabase.getReference(COMMENT_KEY).child(PostKey).push();
 
-            Comment comment = new Comment(comment_content, userId, userPhoto, userName);
+                String comment_content = editTextComment.getText().toString();
+                String userId = firebaseUser.getUid();
+                String userPhoto = Objects.requireNonNull(firebaseUser.getPhotoUrl()).toString();
+                String userName = firebaseUser.getDisplayName();
 
-            // Lambda 변경
-            commentReference.setValue(comment).addOnSuccessListener(unused -> {
-                showMessage("댓글 등록 완료!");
-                editTextComment.setText("");
-                btnAddComment.setVisibility(View.VISIBLE);
-            }).addOnFailureListener(e -> showMessage("댓글 등록에 실패했습니당\n" + e.getMessage()));
+                Comment comments = new Comment(comment_content, userId, userPhoto, userName);
+
+                // Lambda 변경
+                commentReference.setValue(comments).addOnSuccessListener(unused -> {
+                    showMessage("댓글 등록 완료!");
+                    editTextComment.setText("");
+                    btnAddComment.setVisibility(View.VISIBLE);
+                }).addOnFailureListener(e -> showMessage("댓글 등록에 실패했습니당\n" + e.getMessage()));
+            }
         });
 
         // 게시물 데이터 받아와서 할당
