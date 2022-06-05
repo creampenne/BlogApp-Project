@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".Activities.HomeActivity">
+    tools:context=".Activities.Home">
 
     <!--android:id /res/values/@strings.xml (strigns.xml에 id변수 저장)
         tools:ignore="TextContrastCheck" (오류 수정)

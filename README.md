@@ -20,4 +20,3 @@
 1. RegisterActivity : 저장소 권한 없을 경우 재요청 안하는 현상
 2. RegisterActivity : 회원가입시 사진이 없을 경우 앱 종료 현상(onFailureListener 업로드 실패 콜백)
 3. app_bar_home.xml : 타이틀바 색상 수정
-4. Description 없이 게시물 업로드 하고 게시물 확인시 앱 종료 현상
