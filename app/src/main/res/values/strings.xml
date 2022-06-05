@@ -58,4 +58,11 @@
     <string name="post_detail_comment_hint">댓글&#8230;</string>
     <string name="post_detail_add_comment_btn_hint">등록</string>
     <string name="post_detail_user_img">post_detail_user_img</string>
+
+    // row_comment.xml
+    <string name="comment_user_image">comment_user_image</string>
+    <string name="comment_user_name">이름</string>
+    <string name="comment_content">내용이 들어가용~</string>
+    <string name="comment_date">HH:mm</string>
+
 </resources>

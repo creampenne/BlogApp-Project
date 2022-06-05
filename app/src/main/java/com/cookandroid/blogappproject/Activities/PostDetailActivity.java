@@ -11,17 +11,26 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.cookandroid.blogappproject.Adapters.CommentAdapter;
 import com.cookandroid.blogappproject.Models.Comment;
 import com.cookandroid.blogappproject.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -36,6 +45,12 @@ public class PostDetailActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
     FirebaseDatabase firebaseDatabase;
+
+    RecyclerView RvComment;
+    CommentAdapter commentAdapter;
+    List<Comment> listComment;
+
+    static String COMMENT_KEY = "Comments";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,10 +77,14 @@ public class PostDetailActivity extends AppCompatActivity {
         firebaseUser = firebaseAuth.getCurrentUser();
         firebaseDatabase = FirebaseDatabase.getInstance();
 
-        // 댓글 등록 버튼 클릭시
+        RvComment = findViewById(R.id.rv_comment);
+
+        // 댓글 등록 버튼 클릭시 데이터 넣기
         // Lambda 변경
         btnAddComment.setOnClickListener(view -> {
-            DatabaseReference commentReference = firebaseDatabase.getReference("Comments").child(PostKey).push();
+            btnAddComment.setVisibility(View.INVISIBLE);
+
+            DatabaseReference commentReference = firebaseDatabase.getReference(COMMENT_KEY).child(PostKey).push();
 
             String comment_content = editTextComment.getText().toString();
             String userId = firebaseUser.getUid();
@@ -101,6 +120,33 @@ public class PostDetailActivity extends AppCompatActivity {
         txtPostDesc.setText(postDescription);
 
         Glide.with(this).load(firebaseUser.getPhotoUrl()).into(imgCurrentUser);
+
+        // 댓글
+        iniRvComment();
+    }
+
+    // 댓글 데이터 받아오기
+    private void iniRvComment() {
+        RvComment.setLayoutManager(new LinearLayoutManager(this));
+
+        DatabaseReference commentRef = firebaseDatabase.getReference(COMMENT_KEY).child(PostKey);
+        commentRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                listComment = new ArrayList<>();
+                for (DataSnapshot snap:snapshot.getChildren()) {
+                    Comment comment = snap.getValue(Comment.class);
+                    listComment.add(comment);
+                }
+                commentAdapter = new CommentAdapter(getApplicationContext(), listComment);
+                RvComment.setAdapter(commentAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     // Toast 메시지

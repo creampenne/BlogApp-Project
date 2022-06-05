@@ -38,6 +38,7 @@
         <entry key="app/src/main/res/layout/nav_header_home.xml" value="0.1" />
         <entry key="app/src/main/res/layout/nav_header_home2.xml" value="0.36820652173913043" />
         <entry key="app/src/main/res/layout/popup_add_post.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/row_comment.xml" value="0.1" />
         <entry key="app/src/main/res/layout/row_post_item.xml" value="0.375" />
         <entry key="app/src/main/res/menu/activity_home2_drawer.xml" value="0.55" />
         <entry key="app/src/main/res/menu/home.xml" value="0.1" />
