@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -19,7 +18,6 @@ import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
 
-    ImageView ImgUserPhoto;
     private EditText userEmail, userPassword;
     private Button logBtn;
     private ProgressBar loadingProgress;
@@ -33,11 +31,10 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        ImgUserPhoto = findViewById(R.id.logUserPhoto);
-
         userEmail = findViewById(R.id.logMail);
         userPassword = findViewById(R.id.logPassword);
         logBtn = findViewById(R.id.logBtn);
+        Button logRegBtn = findViewById(R.id.logRegBtn);
         loadingProgress = findViewById(R.id.logProgressBar);
 
         loadingProgress.setVisibility(View.INVISIBLE);
@@ -47,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
         homeActivity = new Intent(this, com.cookandroid.blogappproject.Activities.Home.class);
 
         // Lambda 변경
-        ImgUserPhoto.setOnClickListener(view -> {
+        logRegBtn.setOnClickListener(view -> {
             Intent registerActivity = new Intent(getApplicationContext(), RegisterActivity.class);
             startActivity(registerActivity);
             finish();
