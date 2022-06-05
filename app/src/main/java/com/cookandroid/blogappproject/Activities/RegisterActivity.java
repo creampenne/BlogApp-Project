@@ -71,7 +71,7 @@ public class RegisterActivity extends AppCompatActivity {
             final String password = userPassword.getText().toString();
             final String password2 = userPassword2.getText().toString();
 
-            if (email.isEmpty() || name.isEmpty() || password.isEmpty() || password2.isEmpty() || !password.equals(password2)) {
+            if (pickedImgUri == null || email.isEmpty() || name.isEmpty() || password.isEmpty() || password2.isEmpty() || !password.equals(password2)) {
                 // error
                 showMessage("모든 항목을 입력해주세용");
                 regBtn.setVisibility(View.VISIBLE);

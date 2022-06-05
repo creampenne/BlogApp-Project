@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
             final String password = userPassword.getText().toString();
 
             if (mail.isEmpty() || password.isEmpty()) {
-                showMessage("이메일, 패스워드를 입력해주세용");
+                showMessage("이메일, 비밀번호를 입력해주세용");
                 logBtn.setVisibility(View.VISIBLE);
                 loadingProgress.setVisibility(View.INVISIBLE);
             } else {
