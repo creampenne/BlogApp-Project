@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Blog</string>
+    <string name="app_name">PortBlog</string>
 
     // activity_register.xml
     <string name="reguserphoto">userphoto</string>
