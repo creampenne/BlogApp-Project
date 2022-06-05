@@ -1,6 +1,7 @@
 package com.cookandroid.blogappproject.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.cookandroid.blogappproject.Activities.PostDetailActivity;
 import com.cookandroid.blogappproject.Models.Post;
 import com.cookandroid.blogappproject.R;
 
@@ -58,6 +60,24 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> 
             tvTitle = itemView.findViewById(R.id.row_post_title);
             postImage = itemView.findViewById(R.id.row_post_image);
             postUserImage = itemView.findViewById(R.id.row_post_user_image);
+
+            // Lambda 변경
+            itemView.setOnClickListener(view -> {
+                Intent postDetailActivity = new Intent(mContext, PostDetailActivity.class);
+                int position = getAdapterPosition();
+                long timestamp = (long) mData.get(position).getTimeStamp();
+
+                postDetailActivity.putExtra("postImage", mData.get(position).getPicture());
+                postDetailActivity.putExtra("title", mData.get(position).getTitle());
+                postDetailActivity.putExtra("description", mData.get(position).getDescription());
+                postDetailActivity.putExtra("postKey", mData.get(position).getDescription());
+                postDetailActivity.putExtra("userPhoto", mData.get(position).getUserPhoto());
+                // postDetailActivity.putExtra("userName", mData.get(position).getUsername());
+                postDetailActivity.putExtra("postDate", timestamp);
+                mContext.startActivity(postDetailActivity);
+
+
+            });
 
         }
     }

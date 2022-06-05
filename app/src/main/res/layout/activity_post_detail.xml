@@ -128,10 +128,8 @@
             android:text="@string/post_detail_add_comment_btn_hint"
             app:layout_constraintBottom_toBottomOf="@+id/post_detail_comment"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/post_detail_comment"
             app:layout_constraintTop_toTopOf="@+id/post_detail_comment"
-            app:layout_constraintVertical_bias="0.529"
             tools:ignore="TextContrastCheck" />
 
         <ImageView
