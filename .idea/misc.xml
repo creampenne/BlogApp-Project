@@ -7,6 +7,7 @@
         <entry key="app/src/main/res/drawable/black_gradient.xml" value="0.1965" />
         <entry key="app/src/main/res/drawable/circle_background.xml" value="0.3765" />
         <entry key="app/src/main/res/drawable/edittext_button_style_rounded.xml" value="0.186" />
+        <entry key="app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.2075" />
         <entry key="app/src/main/res/drawable/ic_baseline_exit_to_app_24.xml" value="0.2075" />
         <entry key="app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.111" />
@@ -22,9 +23,9 @@
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_home2.xml" value="0.125" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/activity_post_detail.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_register.xml" value="0.125" />
-        <entry key="app/src/main/res/layout/app_bar_home.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_post_detail.xml" value="0.19385986328125" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/app_bar_home.xml" value="0.3111111111111111" />
         <entry key="app/src/main/res/layout/black_gradient.xml" value="0.3007246376811594" />
         <entry key="app/src/main/res/layout/content_home.xml" value="0.125" />
         <entry key="app/src/main/res/layout/content_home2.xml" value="0.2644927536231884" />
@@ -32,18 +33,20 @@
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.19630192502532928" />
         <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.36820652173913043" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.1828774062816616" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.32734304348869286" />
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.19630192502532928" />
         <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.165" />
         <entry key="app/src/main/res/layout/nav_header_home.xml" value="0.1" />
         <entry key="app/src/main/res/layout/nav_header_home2.xml" value="0.36820652173913043" />
-        <entry key="app/src/main/res/layout/popup_add_post.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/popup_add_post.xml" value="0.14" />
         <entry key="app/src/main/res/layout/row_comment.xml" value="0.1" />
         <entry key="app/src/main/res/layout/row_post_item.xml" value="0.1" />
         <entry key="app/src/main/res/menu/activity_home2_drawer.xml" value="0.55" />
-        <entry key="app/src/main/res/menu/activity_home_drawer.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/activity_home_drawer.xml" value="0.5750228881835938" />
         <entry key="app/src/main/res/menu/home.xml" value="0.1" />
         <entry key="app/src/main/res/menu/home2.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_icon.xml" value="0.116" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_icon_round.xml" value="0.116" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3765" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3765" />
       </map>

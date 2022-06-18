@@ -96,24 +96,27 @@
             android:id="@+id/post_detail_currentuser_img"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
+            android:contentDescription="@string/post_detail_currentuser_img"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/post_detail_desc"
-            tools:srcCompat="@tools:sample/avatars"
-            android:contentDescription="@string/post_detail_currentuser_img" />
+            tools:srcCompat="@tools:sample/avatars" />
 
         <EditText
             android:id="@+id/post_detail_comment"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
             android:autofillHints="no"
             android:background="@drawable/edittext_button_style_rounded"
             android:ems="10"
             android:hint="@string/post_detail_comment_hint"
             android:inputType="textPersonName"
             app:layout_constraintBottom_toBottomOf="@+id/post_detail_currentuser_img"
+            app:layout_constraintEnd_toStartOf="@+id/post_detail_add_comment_btn"
             app:layout_constraintStart_toEndOf="@+id/post_detail_currentuser_img"
             app:layout_constraintTop_toTopOf="@+id/post_detail_currentuser_img"
             tools:ignore="TextContrastCheck" />
@@ -122,13 +125,11 @@
             android:id="@+id/post_detail_add_comment_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/edittext_button_style_rounded"
             android:text="@string/post_detail_add_comment_btn_hint"
             app:layout_constraintBottom_toBottomOf="@+id/post_detail_comment"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/post_detail_comment"
             app:layout_constraintTop_toTopOf="@+id/post_detail_comment"
             tools:ignore="TextContrastCheck" />
 

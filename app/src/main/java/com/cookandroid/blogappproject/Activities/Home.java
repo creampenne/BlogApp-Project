@@ -30,8 +30,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.bumptech.glide.Glide;
 import com.cookandroid.blogappproject.Fragments.HomeFragment;
-import com.cookandroid.blogappproject.Fragments.ProfileFragment;
-import com.cookandroid.blogappproject.Fragments.SettingsFragment;
 import com.cookandroid.blogappproject.Models.Post;
 import com.cookandroid.blogappproject.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -223,12 +221,6 @@ public class Home extends AppCompatActivity
         if (id == R.id.nav_home) {
             Objects.requireNonNull(getSupportActionBar()).setTitle("홈");
             getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
-        } else if (id == R.id.nav_profile) {
-            Objects.requireNonNull(getSupportActionBar()).setTitle("프로필");
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, new ProfileFragment()).commit();
-        } else if (id == R.id.nav_settings) {
-            Objects.requireNonNull(getSupportActionBar()).setTitle("설정");
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, new SettingsFragment()).commit();
         } else if (id == R.id.nav_signout) {
             FirebaseAuth.getInstance().signOut();
             Intent loginActivity = new Intent(getApplicationContext(), LoginActivity.class);

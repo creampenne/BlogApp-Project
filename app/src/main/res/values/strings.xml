@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PortBlog</string>
+    <string name="app_name">PortLog</string>
 
     // activity_register.xml
     <string name="reguserphoto">userphoto</string>
@@ -8,6 +8,7 @@
     <string name="regPassword">비밀번호</string>
     <string name="regPassword2">비밀번호 확인</string>
     <string name="regButton">회원가입</string>
+    <string name="reguserphotodes">프로필 이미지 등록</string>
 
     // activity_login.xml
     <string name="logUserPhoto">userphoto</string>
@@ -31,10 +32,8 @@
     // app_bar_home.xml
     <string name="fab">New Post</string>
 
-    // activity_home2_drawer.xml
+    // activity_home_drawer.xml
     <string name="nav_home">홈</string>
-    <string name="nav_profile">프로필</string>
-    <string name="nav_settings">설정</string>
     <string name="nav_signout">로그아웃</string>
 
     // popup_add_post.xml
