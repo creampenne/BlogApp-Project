@@ -32,7 +32,7 @@ dependencies {
     // Firebase BoM
     implementation platform('com.google.firebase:firebase-bom:30.0.2')
     // Firebase Auth
-    implementation 'com.google.firebase:firebase-auth:21.0.4'
+    implementation 'com.google.firebase:firebase-auth:21.0.5'
     // Firebase Realtime Database
     implementation 'com.google.firebase:firebase-database:20.0.5'
     // Firebase Cloud Storage
@@ -44,10 +44,10 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.13.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.0'
     // AndroidX
-    implementation 'com.google.android.material:material:1.6.0'
+    implementation 'com.google.android.material:material:1.6.1'
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
